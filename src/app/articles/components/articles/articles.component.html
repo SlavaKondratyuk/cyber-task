@@ -1,0 +1,57 @@
+<div>
+  <mat-paginator
+  [length]="dataSource.data.length"
+  [pageSize]="10"
+  [pageSizeOptions]="[5, 10, 25, dataSource!.data.length]"
+  aria-label="Select page"
+  (page)="onPageChange($event)"
+  ></mat-paginator>
+  <ng-container *ngIf="!virtualScroll; else infiniteScroll">
+    <div
+      *ngFor="let article of pagedArticles$ | async; let i = index"
+      class="article_tile hover-4">
+      <h2>{{ article.title }}</h2>
+      <div class="article_body">
+        <div class="article_cover-wrapper">
+          <img [src]="article.cover" alt="article image" (error)="onImageError($event)"/>
+        </div>
+        <div>
+          <p>{{ (article.content.length > maxCharacters) ? (article.content | slice:0:maxCharacters)+'...' : (article.content)}}</p>
+          <p>Author: {{ article.author }}</p>
+          <p>Tag: {{article.tags}}</p>
+          <button
+            class="remove-btn"
+            (click)="deleteArticle(article.id)"
+            >
+            Delete
+          </button>
+        </div>
+      </div>
+      
+    </div>
+  </ng-container>
+  <ng-template #infiniteScroll>
+    <cdk-virtual-scroll-viewport
+      itemSize="215"
+      class="viewport no-scroll-bar"
+      minBufferPx="220"
+      maxBufferPx="440"
+    >
+      <div *cdkVirtualFor="let article of pagedArticles$ | async;" class="article_tile hover-4">
+        <h2>{{ article.title }}</h2>
+        <div class="article_body">
+          <div class="article_cover-wrapper">
+            <img [src]="article.cover" alt="article image" (error)="onImageError($event)" />
+          </div>
+          <div>
+            <p>
+              {{ article.content.length > maxCharacters ? (article.content | slice:0:maxCharacters) : article.content }}
+            </p>
+            <p>Author: {{ article.author }}</p>
+            <p>Tag: {{ article.tags }}</p>
+          </div>
+        </div>
+      </div>
+    </cdk-virtual-scroll-viewport>
+  </ng-template>
+</div>

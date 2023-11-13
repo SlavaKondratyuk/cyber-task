@@ -1,0 +1,25 @@
+@mixin hoverEffect() {
+  border: 8px solid;
+  border-image: repeating-linear-gradient(135deg, #7f6b14 0 10px, rgb(233, 21, 2) 77 0 20px, #1596bd 0 30px) 8;
+  -webkit-mask:
+    conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0)
+    var(--_i, 200%) 0 / 200% var(--_i, 8px) border-box no-repeat,
+    conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0)
+    0 var(--_i, 200%) / var(--_i, 8px) 200% border-box no-repeat,
+    linear-gradient(#000 0 0) padding-box no-repeat;
+  transition: 0.3s, -webkit-mask-position 0.3s 0.3s;
+  
+  mask:
+    conic-gradient(from 180deg at top 8px right 8px, #0000 90deg, #000 0)
+    var(--_i, 200%) 0 / 200% var(--_i, 8px) border-box no-repeat,
+    conic-gradient(at bottom 8px left 8px, #0000 90deg, #000 0)
+    0 var(--_i, 200%) / var(--_i, 8px) 200% border-box no-repeat,
+    linear-gradient(#000 0 0) padding-box no-repeat;
+  transition: 0.3s, -webkit-mask-position 0.3s 0.3s;
+  
+  &:hover {
+    --_i: 100%;
+    color: #8f343c;
+    transition: 0.3s, -webkit-mask-size 0.3s 0.3s;
+  }
+}

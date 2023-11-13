@@ -1,0 +1,45 @@
+@import '../../../../assets/mixins/hover';
+@import '../../../../assets/mixins/article';
+
+.article {
+  @include articleStyles();
+}
+
+.hover-4 {
+  @include hoverEffect();
+}
+
+.remove-btn {
+	position: relative;
+	top: 78px;
+	right: 0;
+	z-index: 1;
+	padding: 0.5rem;
+	background: #fff;
+	border-radius: 0 0 0 0.5rem;
+	cursor: pointer;
+	transition: 0.3s;
+	display: inline-block;
+
+	&:hover {
+		background: #f00;
+		color: #fff;
+	}
+}
+
+.viewport {
+  height: 100vh;
+  width: 100%;
+
+}
+
+.no-scroll-bar {
+  overflow-y: scroll;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+
+  &::-webkit-scrollbar {
+    width: 0px;
+    background: transparent;
+  }
+}

@@ -1,0 +1,10 @@
+@import '../../../../assets/mixins/hover';
+@import '../../../../assets/mixins/article';
+
+.article {
+  @include articleStyles();
+}
+
+.hover-4 {
+  @include hoverEffect();
+}

@@ -1,0 +1,25 @@
+@mixin articleStyles() {
+  &_tile {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin: 10px;
+  box-sizing: border-box;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+  }
+  
+  &_body {
+    display: flex;
+  }
+  
+  &_cover-wrapper {
+    margin-right: 20px;
+  
+    img {
+      width: 100%;
+    }
+  }
+}

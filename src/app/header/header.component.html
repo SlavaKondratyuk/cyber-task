@@ -1,0 +1,25 @@
+<header>
+  <div class="logo_wrapper">
+    <div class="logo_container">
+      <img src="../../assets/images/warhammer.png" alt="Logo">
+    </div>
+    <p>Dwarf Times</p>
+  </div>
+
+
+  <nav>
+    <ul class="nav-list">
+      <li><a routerLink="/articles">Articles</a></li>
+      <li><a routerLink="/categories">Categories</a></li>
+    </ul>
+  </nav>
+
+  <div class="search">
+    <input type="text" placeholder="Search" [(ngModel)]="searchQuery">
+    <button (click)="onSearch()">{{(searchQuery) ? ("Search") : ("Refresh")}}</button>
+  </div>
+
+  <div class="login">
+    <button (click)="addNewArticle()">Add New Article</button>
+  </div>
+</header>

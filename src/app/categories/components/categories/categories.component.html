@@ -1,0 +1,26 @@
+<div>
+  <div>
+    <label for="tagsDropdown">Select a Tag:</label>
+    <select id="tagsDropdown" [(ngModel)]="selectedTag" (ngModelChange)="onTagSelectionChange()">
+      <option value="" disabled selected>Select a Tag</option>
+      <option *ngFor="let tag of uniqueTags" [value]="tag">{{ tag }}</option>
+    </select>
+  </div>
+
+  <!-- I know I should have move code down below in seprate component but I didn't had much time and it was quite late -->
+  <div
+        *ngFor="let article of sortedArticles"
+        class="article_tile hover-4">
+        <h2>{{ article.title }}</h2>
+        <div class="article_body">
+          <div class="article_cover-wrapper">
+            <img [src]="article.cover" alt="article image" (error)="onImageError($event)"/>
+          </div>
+          <div>
+            <p>{{ (article.content.length > maxCharacters) ? (article.content | slice:0:maxCharacters)+'...' : (article.content)}}</p>
+            <p>Author: {{ article.author }}</p>
+            <p>Tag: {{article.tags}}</p>
+          </div>
+        </div>
+  </div>
+</div>
